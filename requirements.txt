@@ -1,4 +1,6 @@
 openai
 python-dotenv
+bs4
+requests
 fastapi
 twilio

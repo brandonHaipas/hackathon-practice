@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
 api_key = os.getenv('API_KEY')
 client = OpenAI(api_key=api_key)
 
@@ -11,6 +12,7 @@ tools = [
   {
       "type": "function",
       "function": {
+
           "name": "get_highlighted_properties",
           "parameters": {
               "type": "object",
@@ -34,6 +36,7 @@ completion = client.chat.completions.create(
       "content": "You are a helpful customer support assistant for the TOCTOC site. Use the supplied tools to assist the user."
   },
       {"role": "user", "content": message}],
+
   tools=tools,
 )
 
