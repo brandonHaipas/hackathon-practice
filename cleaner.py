@@ -10,5 +10,11 @@ assets = soup.find("script", {"id" : "__NEXT_DATA__"}, recursive=True)
 assets_json = json.loads(assets.get_text(strip=True))
 
 assets_list = assets_json['props']['pageProps']['listaDestacados'][0]['lista']
+assets_list1 = assets_json['props']['pageProps']['listaDestacados'][1]['lista']
+assets_list2 = assets_json['props']['pageProps']['listaDestacados'][2]['lista']
+assets_list+=assets_list1
+assets_list += assets_list2
 
-print(assets_json)
+def get_highlighted_properties(number_of_properties, type_of_property):
+    
+    return
