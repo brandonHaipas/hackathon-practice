@@ -16,5 +16,12 @@ assets_list+=assets_list1
 assets_list += assets_list2
 
 def get_highlighted_properties(number_of_properties, type_of_property):
-    
-    return
+    decode_dict = { 'nueva':'Venta Nuevo', 'arriendo':'Arriendo', 'usada':'Venta Usado'}
+    output = []
+    count = 0
+    max = min(number_of_properties, len(assets_list))
+    for elem in assets_list:
+        if elem['tipoOperacion'] == decode_dict[type_of_property] and count < max:
+            output.append(elem)
+            count +=1
+    return output

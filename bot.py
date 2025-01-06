@@ -1,7 +1,8 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-
+from cleaner import get_highlighted_properties
+import json
 load_dotenv()
 
 api_key = os.getenv('API_KEY')
@@ -39,5 +40,6 @@ completion = client.chat.completions.create(
 
   tools=tools,
 )
-
-print(completion.choices[0].message.tool_calls)
+calls = completion.choices[0].message.tool_calls
+arguments = json.loads(calls[0].function.arguments)
+print(get_highlighted_properties(int(arguments['number_of_properties']), arguments['type_of_property']))
